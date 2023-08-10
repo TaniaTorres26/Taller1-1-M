@@ -1,5 +1,6 @@
 package calculadora;
 import java.util.Scanner;
+
 /*Tania Sofia Torres Romero*/
 public class Calculadora {
 
@@ -11,8 +12,12 @@ public class Calculadora {
     float res;
 
     do{
-    System.out.println("Elige la operacion a realizar\n1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Salir");
+    System.out.println("Elige la operacion a realizar\n1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Seno\n6. Dividir\n7. Dividir\n8. Salir");
     opcion = leer.nextInt();
+    System.out.println("Digite el primer numero");
+    num1 = leer.nextInt();
+    System.out.println("Digite el segundo numero");
+    num2 = leer.nextInt();
         switch (opcion) {
     case 1 -> {
       res = num1 + num2;
@@ -38,16 +43,15 @@ public class Calculadora {
       }
       break;
     }
-    case 5 -> {
+      case 5 -> {
+      res = (float)Math.sin(num1);
+      System.out.println("El seno del numero es: " + res );
+      break;
+    }
+    case 8 -> {
       continue;
     }
     }
-
-    System.out.println("Digite el primer numero");
-    num1 = leer.nextInt();
-    System.out.println("Digite el segundo numero");
-    num2 = leer.nextInt();
-} while (opcion!=5);
-    
+    } while (opcion !=8);
 }
 }
