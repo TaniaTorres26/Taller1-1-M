@@ -44,7 +44,7 @@ public class callculadora extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         botonTan = new javax.swing.JButton();
         botonMultiplicar = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        botonPi = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         botonPunto = new javax.swing.JButton();
         botonIVA = new javax.swing.JButton();
@@ -59,6 +59,11 @@ public class callculadora extends javax.swing.JFrame {
 
         botonC.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         botonC.setText("C");
+        botonC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonC);
 
         botonRaiz.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -129,6 +134,11 @@ public class callculadora extends javax.swing.JFrame {
 
         botonSen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonSen.setText("sen");
+        botonSen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSenActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonSen);
 
         botonSumar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -172,6 +182,11 @@ public class callculadora extends javax.swing.JFrame {
 
         botonCos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonCos.setText("cos");
+        botonCos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCosActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonCos);
 
         botonRestar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -215,6 +230,11 @@ public class callculadora extends javax.swing.JFrame {
 
         botonTan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonTan.setText("tan");
+        botonTan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTanActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonTan);
 
         botonMultiplicar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -226,15 +246,15 @@ public class callculadora extends javax.swing.JFrame {
         });
         jPanel1.add(botonMultiplicar);
 
-        jButton17.setBackground(new java.awt.Color(102, 102, 102));
-        jButton17.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jButton17.setText("lab1");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        botonPi.setBackground(new java.awt.Color(102, 102, 102));
+        botonPi.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        botonPi.setText("pi");
+        botonPi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                botonPiActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton17);
+        jPanel1.add(botonPi);
 
         jButton18.setBackground(new java.awt.Color(102, 102, 102));
         jButton18.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -258,6 +278,11 @@ public class callculadora extends javax.swing.JFrame {
 
         botonIVA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonIVA.setText("IVA");
+        botonIVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIVAActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonIVA);
 
         botonIgual.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -321,7 +346,15 @@ private double obtenerValorRaizEnesima() {
 }
 
     private void botonCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCEActionPerformed
-        // TODO add your handling code here:
+       int tamano = cadenaNumeros.length();
+       if (tamano>0){
+           if (tamano ==1){
+               cadenaNumeros = "0";
+           }else{
+               cadenaNumeros = cadenaNumeros.substring(0,cadenaNumeros.length()-1);
+           }
+           etiquetaNumeros.setText(cadenaNumeros);
+       }
     }//GEN-LAST:event_botonCEActionPerformed
 
     private void botonPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPotenciaActionPerformed
@@ -556,9 +589,92 @@ private double obtenerValorPotenciaEnesima() {
         }
     }//GEN-LAST:event_botonPuntoActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void botonPiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPiActionPerformed
+        if (etiquetaNumeros.getText().equals("0")) {
+    cadenaNumeros = String.valueOf(Math.PI);
+    } else {
+    cadenaNumeros += String.valueOf(Math.PI);
+    }
+    etiquetaNumeros.setText(cadenaNumeros);
+    activado = true;
 
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_botonPiActionPerformed
+
+    private void botonTanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTanActionPerformed
+    double primerNumero = Double.parseDouble(cadenaNumeros);
+    double tangente = calcularTangente(primerNumero);
+
+    if (Double.isNaN(tangente)) {
+        etiquetaMuestra.setText("tangente(" + cadenaNumeros + ") es indefinida");
+        etiquetaNumeros.setText("Indefinido");
+    } else {
+        etiquetaMuestra.setText("tangente(" + cadenaNumeros + ")");
+        etiquetaNumeros.setText(String.format("%.2f", tangente));
+        cadenaNumeros = String.valueOf(tangente);
+        punto = true;
+    }
+}                                         
+
+private double calcularTangente(double numero) {
+    double tangente = Math.tan(Math.toRadians(numero));
+    return tangente;
+    }//GEN-LAST:event_botonTanActionPerformed
+
+    private void botonSenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSenActionPerformed
+    double primerNumero = Double.parseDouble(cadenaNumeros);
+    double seno = calcularSeno(primerNumero);
+
+    etiquetaMuestra.setText("sen(" + cadenaNumeros + ")");
+    etiquetaNumeros.setText(String.format("%.2f", seno));
+    cadenaNumeros = String.valueOf(seno);
+    punto = true;
+    }                                         
+
+    private double calcularSeno(double numero) {
+    double seno = Math.sin(Math.toRadians(numero));
+    return seno;
+    }//GEN-LAST:event_botonSenActionPerformed
+
+    private void botonCosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCosActionPerformed
+    double primerNumero = Double.parseDouble(cadenaNumeros);
+    double coseno = calcularCoseno(primerNumero);
+
+    etiquetaMuestra.setText("coseno(" + cadenaNumeros + ")");
+    etiquetaNumeros.setText(String.format("%.2f", coseno));
+    cadenaNumeros = String.valueOf(coseno);
+    punto = true;
+    }                                         
+
+    private double calcularCoseno(double numero) {
+    double coseno = Math.cos(Math.toRadians(numero));
+    return coseno;
+    }//GEN-LAST:event_botonCosActionPerformed
+
+    private void botonIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIVAActionPerformed
+    double monto = Double.parseDouble(cadenaNumeros);
+    double porcentajeIVA = 0.19; 
+
+    double iva = calcularIVA(monto, porcentajeIVA);
+
+    etiquetaMuestra.setText("IVA del " + (porcentajeIVA * 100) + "% en $" + cadenaNumeros);
+    etiquetaNumeros.setText(String.format("%.2f", iva));
+    cadenaNumeros = String.valueOf(iva);
+    punto = true;
+    }                                         
+
+private double calcularIVA(double monto, double porcentajeIVA) {
+    return monto * porcentajeIVA;
+    }//GEN-LAST:event_botonIVAActionPerformed
+
+    private void botonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCActionPerformed
+        etiquetaMuestra.setText("");
+        etiquetaNumeros.setText("0");
+        operacion = "nula";
+        cadenaNumeros = "";
+        activado = true;
+        punto = true;
+
+    }//GEN-LAST:event_botonCActionPerformed
 
     public static void main(String args[]) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         
@@ -579,6 +695,7 @@ private double obtenerValorPotenciaEnesima() {
     private javax.swing.JButton botonIVA;
     private javax.swing.JButton botonIgual;
     private javax.swing.JButton botonMultiplicar;
+    private javax.swing.JButton botonPi;
     private javax.swing.JButton botonPotencia;
     private javax.swing.JButton botonPunto;
     private javax.swing.JButton botonRaiz;
@@ -592,7 +709,6 @@ private double obtenerValorPotenciaEnesima() {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
